@@ -26,3 +26,15 @@ virtual_network_name = "man-vnet"
 address_prefixes = ["10.0.1.0/24"]
 }
 
+resource "azurerm_network_interface" "nic" {
+name = "man-nic"
+location ="westus"
+resource_group_name = "man-rg"
+
+ip_configuration {
+name = "ipconman"
+subnet_id = azurerm_subnet.snet.id
+private_ip_address_allocation = "Dynamic"
+}
+}
+
