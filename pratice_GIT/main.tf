@@ -52,6 +52,12 @@ resource "azurerm_virtual_network" "vnet" {
     address_space = ["10.0.0.0/16"]
 }
 
+resource "azurerm_subnet" "snet" {
+name = "man-snet"
+resource_group_name= "man-rg"
+virtual_network_name = "man-vnet"
+address_prefixes = ["10.0.1.0/24"]
+}
 
 resource "azurerm_network_interface" "nic" {
 name = "man-nic"
