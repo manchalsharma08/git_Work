@@ -53,3 +53,15 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 
+resource "azurerm_network_interface" "nic" {
+name = "man-nic"
+location ="westus"
+resource_group_name = "man-rg"
+
+ip_configuration {
+name = "ipconman"
+subnet_id = azurerm_subnet.snet.id
+private_ip_address_allocation = "Dynamic"
+}
+}
+
